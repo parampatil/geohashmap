@@ -23,11 +23,21 @@ class App extends R.Component<RouteComponentProps<any>> {
 
   onGeohashChanged(geohash: string) {
     debug(`InnerApp.onGeohashSubmited(geohash: '${geohash}')`);
+    // Send message to parent window
+    window.parent.postMessage({ 
+      type: 'geohash-change',
+      geohash: geohash 
+    }, '*');
     this.historyUpdate(geohash);
   }
 
   onGeohashSubmited(geohash: string) {
     debug(`InnerApp.onGeohashSubmited(geohash: '${geohash}')`);
+    // Send message to parent window
+    window.parent.postMessage({
+      type: 'geohash-submit',
+      geohash: geohash
+    }, '*');
     this.historySubmit(geohash);
   }
 
@@ -44,6 +54,7 @@ class App extends R.Component<RouteComponentProps<any>> {
       this.props.history.replace(path);
     }
   }
+
   private historySubmit(geohash: string) {
     const path = App.BASE_PATH + geohash;
     this.props.history.replace(path, { submit: true });
