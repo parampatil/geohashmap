@@ -36,7 +36,7 @@
     "rimraf": "^2.6.3",
     "style-loader": "^0.23.1",
     "ts-loader": "^5.3.3",
-    "typescript": "^3.4.1",
+    "typescript": "^5.8.3",
     "uglify-js": "^3.5.3",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.6",
