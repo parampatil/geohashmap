@@ -12,13 +12,12 @@
     "build:prod": "npm run clean:dist && npm run webpack -- --mode=production --config webpack.prod.js",
     "analys:prod": "npm run webpack -- --mode=production --config webpack.prod.js --profile --json > profile.json",
     "predeploy": "npm run build:prod",
-"deploy": "gh-pages -d build/dist",
+    "deploy": "gh-pages -d build/dist",
     "start": "npm run start:dev",
     "start:dev": "npm run webpack-dev-server -- --mode development --open --progress --watch",
     "rimraf": "rimraf",
     "webpack": "webpack",
-    "webpack-dev-server": "webpack-dev-server",
-
+    "webpack-dev-server": "webpack-dev-server"
   },
   "author": "Alexander Berezovsky",
   "license": "MIT",
