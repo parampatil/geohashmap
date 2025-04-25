@@ -31,28 +31,26 @@ class App extends R.Component<RouteComponentProps<any>> {
     this.historySubmit(geohash);
   }
 
+  private static readonly BASE_PATH = "/geohashmap/";
+
   private historyUpdate(geohash: string) {
+    const path = App.BASE_PATH + geohash;
     if (
       this.props.history.location.state &&
       this.props.history.location.state["submit"]
     ) {
-      this.props.history.push(geohash);
+      this.props.history.push(path);
     } else {
-      this.props.history.replace(geohash);
+      this.props.history.replace(path);
     }
   }
   private historySubmit(geohash: string) {
-    this.props.history.replace(geohash, { submit: true });
+    const path = App.BASE_PATH + geohash;
+    this.props.history.replace(path, { submit: true });
   }
 
   render() {
     const base = "/geohashmap/";
-    console.log(
-      "pathname",
-      this.props.location.pathname.startsWith(base)
-        ? this.props.location.pathname.substring(base.length)
-        : ""
-    );
     const geohash = this.props.location.pathname.startsWith(base)
       ? this.props.location.pathname.substring(base.length)
       : "";
